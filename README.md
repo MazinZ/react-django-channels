@@ -17,6 +17,7 @@ From /twitter_feed_api:
 
 ```
 $ pip install -r requirements.txt
+$ python manage.py migrate
 $ python manage.py runserver
 ```
 
