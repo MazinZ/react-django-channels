@@ -25,6 +25,7 @@ From /twitter_feed_frontend:
 
 ```
 $ npm install
+$ npm run build
 $ npm start
 ```
 
