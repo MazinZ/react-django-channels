@@ -1,0 +1,8 @@
+.alert {
+  margin: 0;
+  border-radius: 0;
+  &:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }
+}

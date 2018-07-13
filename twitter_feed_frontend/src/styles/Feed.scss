@@ -1,0 +1,14 @@
+.feed-container {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px #ddd solid;
+
+  .search {
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 0;
+    border-bottom: 2px #34a1f2 solid;
+  }
+}

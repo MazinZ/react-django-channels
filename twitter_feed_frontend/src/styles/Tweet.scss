@@ -1,0 +1,31 @@
+.card {
+  border-radius: 0;
+  border-width: 1px 0px 0px 0px;
+  &:hover {
+    background-color: #fdfdfd;
+  }
+  a:link,
+  a:visited {
+    color: initial;
+  }
+}
+
+.card-top {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.user-details {
+  display: inline-block;
+}
+
+.card-subtitle {
+   font-size: 12px;
+   margin-top: -12px;
+}
