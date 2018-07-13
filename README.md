@@ -1,7 +1,6 @@
 # react-django-channels
 
-DigitalOcean is experiencing issues but I planned on hosting the project on a VM there so the team wouldn't have to go through the setup. 
-I'll update this with a link as soon as I can create a new VM.
+Project hosted here: http://178.128.182.6/
 
 ## Setup instructions
 
@@ -51,3 +50,6 @@ The app should be live at localhost:3000.
 6. Add search for words/keywords, not just users. I kept this out to keep the scope of the project small, but it would require a change to the Feed component and the consumer/api view.
 
 7. Twitter creds should be set to env variables, not within the settings.py file. That was the main reason why I introduced the proxy server to being with.
+
+8. Error handling
+
