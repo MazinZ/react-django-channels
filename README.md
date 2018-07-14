@@ -53,3 +53,64 @@ The app should be live at localhost:3000.
 
 8. Error handling
 
+
+## Other stuff
+
+I deployed the project with NGINX/Gunicorn/Daphne. Here's the NGINX config:
+
+```
+    upstream app {
+        server unix:/home/slync/react-django-channels/twitter_feed_api/twitter_feed_api.sock;
+    }
+
+    upstream ws_server {
+        server unix:/tmp/daphne.sock;
+    }
+
+    server {
+        listen 80;
+        listen [::]:80;
+
+        server_name 178.128.182.6;
+
+        access_log  /var/log/nginx/access.log;
+        error_log  /var/log/nginx/error.log;
+        root /home/slync/react-django-channels/twitter_feed_frontend/build;
+        index index.html;
+
+        location /api/ {
+            try_files $uri @proxy_to_app;
+        }
+
+        location /feed/twitter-stream/ {
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+            proxy_redirect off;
+            proxy_pass   http://ws_server;
+        }
+
+        location / {
+           try_files $uri /index.html =404;
+        }
+
+        location @proxy_to_ws {
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+            proxy_redirect off;
+
+            proxy_pass   http://ws_server;
+        }
+
+        location @proxy_to_app {
+            proxy_set_header X-Forwarded-Proto http;
+            proxy_set_header X-Url-Scheme $scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+
+            proxy_pass   http://app;
+        }
+    }
+```
